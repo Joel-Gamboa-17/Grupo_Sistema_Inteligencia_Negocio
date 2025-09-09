@@ -1,6 +1,6 @@
 # Fichas de KPI 
 
-| CAMPO | DESCRIPCIÓN / EJEMPLO |
+| CAMPO | DESCRIPCIÓN|
 |-------|-----------------------|
 | **Nombre del KPI** | "Nivel de Satisfacción del Cliente" |
 | **Objetivo estratégico asociado** | Mejorar la experiencia del cliente |
@@ -15,7 +15,7 @@
 <br>
 <br>
 
-| CAMPO | DESCRIPCIÓN / EJEMPLO |
+| CAMPO | DESCRIPCIÓN|
 |-------|-----------------------|
 | **Nombre del KPI** | "Nivel de Satisfacción del Cliente" |
 | **Objetivo estratégico asociado** | Mejorar la experiencia del cliente |
@@ -30,7 +30,7 @@
 <br>
 <br>
 
-| CAMPO | DESCRIPCIÓN / EJEMPLO |
+| CAMPO | DESCRIPCIÓN|
 |-------|-----------------------|
 | **Nombre del KPI** | "Nivel de Satisfacción del Cliente" |
 | **Objetivo estratégico asociado** | Mejorar la experiencia del cliente |
