@@ -1,3 +1,7 @@
+# ARQUITECTURA INICIAL
+![Arquitectura](arquitectura_v3.png)
+
+
 ## FUENTES (Sources) 
 
 Este es el punto de partida de los datos. La arquitectura puede extraer información de una variedad de sistemas, como: 
