@@ -4,13 +4,13 @@
 
 ## FUENTES (Sources) 
 
-Este es el punto de partida de los datos. La arquitectura puede extraer información de una variedad de sistemas, como: 
+Este es el punto de partida de los datos. Los fuentes de datos son: 
 
-ERP/CRM: Sistemas de planificación de recursos empresariales y gestión de relaciones con clientes. 
-
-CSV/Excel: Archivos planos. 
-
-APIs/Logs: Datos provenientes de servicios o registros de aplicaciones. 
+* Utilidades de clientes en cada cambio Datos 
+* historicos de utilidades en periodos pasados por dia util 
+* Utilidades generada por ejecutivo por cada canal 
+* Numero de comunicaciones hechas por mes 
+* Performance de comunicaciones
 
  
 
