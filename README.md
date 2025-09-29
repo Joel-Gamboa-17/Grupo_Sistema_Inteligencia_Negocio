@@ -21,5 +21,5 @@ Falta de indicador que indiqué la probabilidad de alcanzar la meta de Utilidade
 ## Fuente de datos
 * Datos historicos de utilidades en periodos pasados por dia util
 * Ranking de utilidad generada por ejecutivos por campaña
-* Numero de comunicaciones hechas por mes
+* comunicaciones hechas por mes
 * Segmentación de clientes por periodo
