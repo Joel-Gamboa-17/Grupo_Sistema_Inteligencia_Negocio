@@ -19,8 +19,8 @@ Dificultades para alcanzar la metas propuestas en utilidades en ciertos meses en
 8. Demora en la creación de artes para ciertas comunicaciones
 
 ## Fuente de datos
-Utilidades de clientes en cada cambio 
-Datos historicos de utilidades en periodos pasados por dia util 
-Utilidades generada por ejecutivo por cada canal
-Numero de comunicaciones hechas por mes 
-Performance de comunicaciones
+* Utilidades de clientes en cada cambio 
+* Datos historicos de utilidades en periodos pasados por dia util 
+* Utilidades generada por ejecutivo por cada canal
+* Numero de comunicaciones hechas por mes 
+* Performance de comunicaciones
