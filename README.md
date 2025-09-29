@@ -6,7 +6,7 @@ Interbank (Banco Internacional del Perú S.A.A.) es uno de los principales banco
 
 
 ## Problema
-Dificultades para alcanzar la metas propuestas en utilidades en ciertos meses en el area de trading
+Falta de indicador que indiqué la probabilidad de alcanzar la meta de Utilidades en el área de Trading en un mes en específico
 
 ## Puntos de Dolor
 1. Creación lenta de textos para las comunicaciones
@@ -19,7 +19,7 @@ Dificultades para alcanzar la metas propuestas en utilidades en ciertos meses en
 8. Demora en la creación de artes para ciertas comunicaciones
 
 ## Fuente de datos
-* Datos historicos de utilidades en periodos pasados por dia util 
-* Utilidades generada por ejecutivo por cada canal
-* Numero de comunicaciones hechas por mes 
-* Performance de comunicaciones
+* Datos historicos de utilidades en periodos pasados por dia util
+* Ranking de utilidad generada por ejecutivos por campaña
+* Numero de comunicaciones hechas por mes
+* Segmentación de clientes por periodo
