@@ -39,7 +39,7 @@ LOAD DATA INPATH '/user/maria_dev/sin/tlv_ranking.csv'
 OVERWRITE INTO TABLE TLV_RANKING;
 
 --------------------------------------------------------
-CREATE EXTERNAL TABLE IF NOT EXISTS SEGMENTOS_REPEATED (
+CREATE EXTERNAL TABLE IF NOT EXISTS SEGMENTOS (
     periodo                INT,
     codigo_unico           BIGINT, 
     ruc                    BIGINT, 
