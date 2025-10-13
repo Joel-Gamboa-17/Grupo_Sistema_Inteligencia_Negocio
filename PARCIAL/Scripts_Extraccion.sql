@@ -57,7 +57,7 @@ STORED AS TEXTFILE
 TBLPROPERTIES("skip.header.line.count"="1");
 
 LOAD DATA INPATH '/user/maria_dev/sin/segmentos_repeated.csv' 
-OVERWRITE INTO TABLE SEGMENTOS_REPEATED;
+OVERWRITE INTO TABLE SEGMENTOS;
 
 ---------------------------------------------------------
 
