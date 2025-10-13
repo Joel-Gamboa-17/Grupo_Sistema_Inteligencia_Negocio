@@ -198,29 +198,57 @@ FROM (
 --INSERCCION A LA TABLA DE HECHO
 
 INSERT OVERWRITE TABLE FACT_UTILIDAD_TRADING
-SELECT
-  
-    ROW_NUMBER() OVER (ORDER BY t.monto) AS id_hecho,
+SELECT DISTINCT 
+    -- Generar ID_HECHO
+    ROW_NUMBER() OVER (ORDER BY c.fecha, c.RUC) AS id_hecho,
     
-    CAST(REGEXP_REPLACE(CAST(CURRENT_DATE() AS STRING), '-', '') AS INT) AS id_fecha, 
-    de.id_ejecutivo,
-    0 AS id_cliente,
-    dc.id_canal,
-    0 AS id_comunicacion,
+    -- ID_FECHA: Convierte la fecha YYYY-MM-DD a un entero YYYYMMDD
+    CAST(REGEXP_REPLACE(c.fecha, '-', '') AS INT) AS id_fecha, 
     
-    -- Métricas
-    t.monto,
-    t.desembolsado,
-    t.volumen_cambiado,
-    t.utilidad
-FROM (
-    SELECT * FROM TLV_RANKING
-    UNION ALL
-    SELECT * FROM VIRTUAL_RANKING
-    UNION ALL
-    SELECT * FROM TIENDAS_RANKING
-) t
-LEFT JOIN DIM_CANAL dc ON t.canal = dc.nombre_canal
-LEFT JOIN DIM_EJECUTIVO de ON t.ejecutivo = de.nombre_ejecutivo;
+    -- ID_EJECUTIVO: Resuelto a través del JOIN con DIM_EJECUTIVO
+    COALESCE(de.id_ejecutivo, -1) AS id_ejecutivo,
+    
+    -- ID_CLIENTE: Resuelto a través del JOIN con DIM_CLIENTE
+    COALESCE(dcl.id_cliente, -1) AS id_cliente, 
+    
+    -- ID_CANAL: Resuelto a través del Ejecutivo/Canal
+    COALESCE(dc.id_canal, -1) AS id_canal,
+    
+    -- ID_COMUNICACION: Desconocido
+    -1 AS id_comunicacion,
+    
+ -- Métricas (de CAMBIOS_CLIENTES)
+    c.VOL_USD AS monto, 
+    0 AS desembolsado, 
+    c.VOL_USD AS volumen_cambiado,
+    c.Utilidad AS utilidad
+FROM 
+    -- 1. Fuente principal: La tabla de hechos (CAMBIOS_CLIENTES)
+    cambios_clientes c
+LEFT JOIN 
+    -- 2. UNIÓN con DIM_CLIENTE para obtener el ID_CLIENTE
+    DIM_CLIENTE dcl ON c.RUC = dcl.ruc AND c.codigo_unico = dcl.codigo_unico
+LEFT JOIN 
+    -- 3. UNIÓN con SEGMENTOS_REPEATED para encontrar el EJECUTIVO ASIGNADO
+    (
+        SELECT ruc, ejecutivo, CAST(periodo AS STRING) AS periodo 
+        FROM SEGMENTOS t1 
+    ) AS s ON c.RUC = s.ruc AND REGEXP_REPLACE(SUBSTR(c.fecha, 1, 7), '-', '') = s.periodo
+LEFT JOIN 
+    -- 4. UNIÓN con DIM_EJECUTIVO para obtener el ID_EJECUTIVO
+    DIM_EJECUTIVO de ON s.ejecutivo = de.nombre_ejecutivo
+LEFT JOIN
+    -- 5. RESOLVER CANAL: Unimos el Ejecutivo con la información del CANAL de los Rankings
+    (
+        SELECT DISTINCT ejecutivo, canal FROM TLV_RANKING
+        UNION ALL -- Usamos UNION ALL para un mejor rendimiento
+        SELECT DISTINCT ejecutivo, canal FROM VIRTUAL_RANKING
+        UNION ALL
+        SELECT DISTINCT ejecutivo, canal FROM TIENDAS_RANKING
+    ) AS r ON s.ejecutivo = r.ejecutivo
+LEFT JOIN
+    -- 6. UNIÓN con DIM_CANAL para obtener el ID_CANAL
+    DIM_CANAL dc ON r.canal = dc.nombre_canal;
+
 
 
