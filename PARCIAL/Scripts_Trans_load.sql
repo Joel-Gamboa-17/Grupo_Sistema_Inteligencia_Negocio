@@ -37,20 +37,20 @@ STORED AS ORC;
 CREATE EXTERNAL TABLE IF NOT EXISTS DIM_COMUNICACION (
     id_comunicacion      INT, -- Clave Primaria (Sustituta)
     tipo_cliente         STRING,
-    especificacion       STRING, -- HTML, SMS, PUSH
+    especificacion       STRING, 
     estado               STRING,
     card                 STRING,
-    flag_presupuesto     INT -- 1 si afectado por límite de 10K, 0 si no.
+    flag_presupuesto     INT 
 )
 STORED AS ORC;
 
 --DIMENSION FECHA
 CREATE EXTERNAL TABLE IF NOT EXISTS DIM_FECHA (
-    id_fecha             INT, -- Clave Primaria (YYYYMMDD)
+    id_fecha             INT, 
     fecha                DATE,
-    periodo              INT, -- YYYYMM
-    dia_util_flag        INT, -- 1 = hábil, 0 = no hábil
-    dia_final_util       INT, -- Días restantes para fin de mes hábil
+    periodo              INT, 
+    dia_util_flag        INT, 
+    dia_final_util       INT, 
     anio                 INT,
     mes_num              INT,
     nombre_dia_semana    STRING
@@ -94,7 +94,6 @@ FROM (
 --DIMENSION EJECUTIVO
 INSERT OVERWRITE TABLE DIM_EJECUTIVO
 SELECT
-    -- Genera un ID único para cada combinación Ejecutivo/Jefe
     ROW_NUMBER() OVER (ORDER BY t.ejecutivo, t.jefe) AS id_ejecutivo,
     t.ejecutivo AS nombre_ejecutivo,
     t.jefe AS nombre_jefe
@@ -148,7 +147,7 @@ SELECT
     COALESCE(s.ruc, c.ruc) AS ruc,
     c.nombre AS nombre_cliente,
     
-    -- Atributos de Segmentación y Logeo (desde SEGMENTOS_REPEATED)
+    -- Atributos de Segmentación y Logeo (desde SEGMENTOS)
     s.segmento_fx,
     s.tipo_cuenta,
     s.logeo,
