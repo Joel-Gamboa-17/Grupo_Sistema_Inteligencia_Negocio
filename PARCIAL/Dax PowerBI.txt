@@ -1,0 +1,61 @@
+-- En la tabla [dim_cliente]
+
+Tasa de Fuga Clientes Recurrentes (%) = 
+VAR ClientesRecurrentes =
+    FILTER(
+        dim_cliente,
+        dim_cliente[segmento_fx] = "RECURRENTE"
+    )
+VAR ClientesTotales =
+    COUNTROWS(ClientesRecurrentes)
+VAR ClientesFugados =
+    COUNTROWS(
+        FILTER(ClientesRecurrentes, dim_cliente[flag_fuga] = 1)
+    )
+RETURN
+DIVIDE(ClientesFugados, ClientesTotales, 0) * 100
+
+-- En la tabla [dim_cliente]
+
+Color Semáforo Fuga = 
+SWITCH(
+    TRUE(),
+    [Tasa de Fuga Clientes Recurrentes (%)] < 10, "#00B050",   -- Verde
+    [Tasa de Fuga Clientes Recurrentes (%)] < 20, "#FFC000",   -- Amarillo
+    "#FF0000"                                                -- Rojo
+)
+
+-- En la tabla [dim_fecha]
+
+% Días Hábiles Efectivos = 
+VAR DiasHabiles = CALCULATE(COUNTROWS(dim_fecha), dim_fecha[dia_util_flag] = 1)
+VAR TotalDias = COUNTROWS(dim_fecha)
+RETURN
+DIVIDE(DiasHabiles, TotalDias, 0) * 100
+
+-- En la tabla [fact_utilidad_trading]
+
+Utilidad Acumulada = 
+CALCULATE(
+    SUM(fact_utilidad_trading[utilidad]),
+    FILTER(
+        ALLSELECTED(dim_fecha),
+        dim_fecha[fecha] <= MAX(dim_fecha[fecha])
+    )
+)
+
+-- En la tabla [fact_utilidad_trading]
+
+Utilidad Promedio por Ejecutivo = 
+DIVIDE(
+    SUM(fact_utilidad_trading[utilidad]),
+    DISTINCTCOUNT(fact_utilidad_trading[id_ejecutivo])
+)
+
+
+
+
+
+
+
+
