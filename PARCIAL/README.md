@@ -12,6 +12,7 @@ Consolidar el flujo completo de datos desde las fuentes OLTP hasta el consumo an
 Fuentes (CSV/OLTP) ➜ Ingesta HDFS ➜ Procesamiento en Hive (Raw / Curated) ➜
 Modelado Dimensional (Star Schema) ➜ Cubo OLAP ➜ Dashboard Power BI
 
+![Flujo](Flujo_desarrollo.png)
 ---
 
 ### 3. DESARROLLO TÉCNICO
