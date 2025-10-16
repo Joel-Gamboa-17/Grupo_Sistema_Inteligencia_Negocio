@@ -46,6 +46,7 @@ Tablas creadas y cargadas en la capa **Curated (Data Warehouse)**:
 | Dimensión | `DIM_FECHA` | Calendario de análisis y días útiles | ORC |
 | Hechos | `FACT_UTILIDAD_TRADING` | Métricas de utilidad, monto y volumen | ORC |
 
+![ETL](ETL.png)
 ---
 
 ### 4. MODELO ESTRELLA (Star Schema)
@@ -60,6 +61,7 @@ Contiene los indicadores financieros principales y las claves foráneas hacia la
 - `DIM_EJECUTIVO`: mide productividad individual.
 - `DIM_CANAL`: analiza los canales más rentables.
 
+![Diagrama](Diagrama.png)
 ---
 
 ### 5. CUBO OLAP Y DASHBOARD
@@ -72,12 +74,13 @@ Contiene los indicadores financieros principales y las claves foráneas hacia la
 - **Vista acumulativa:** curva de crecimiento mensual de utilidades.  
 - **Vista comparativa:** ranking de ejecutivos por utilidad promedio.  
 - **KPI con semáforo:** tasa de fuga de clientes (51 % en rojo).  
-- Archivo: `dashboard/Trading_Interbank.pbix`.
 
+![PowerBI_1](PowerBI_1.png)
+![PowerBI_2](PowerBI_2.png)
 ---
 
 ### 6. LIMITACIONES DETECTADAS
-- Acceso restringido a datos históricos (solo desde periodo 202501).
+- Acceso restringido a datos históricos (solo desde periodo 2025-01).
 - Versión desfasada de Hive en Ambari Sandbox (incompatibilidad en funciones).
 - Dependencia de aprobación de datos sensibles del área comercial.
 
