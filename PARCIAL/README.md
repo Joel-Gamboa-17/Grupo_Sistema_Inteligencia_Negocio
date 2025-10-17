@@ -74,7 +74,7 @@ Contiene los indicadores financieros principales y las claves foráneas hacia la
 - **Vista acumulativa:** curva de crecimiento mensual de utilidades.  
 - **Vista comparativa:** ranking de ejecutivos por utilidad promedio.  
 - **KPI con semáforo:** tasa de fuga de clientes (51 % en rojo).  
-
+- Archivo: [PARCIAL](PARCIAL.pbix).
 ![PowerBI_1](PowerBI_1.png)
 ![PowerBI_2](PowerBI_2.png)
 ---
@@ -95,4 +95,9 @@ Contiene los indicadores financieros principales y las claves foráneas hacia la
 
 ---
 
+### 8. CONCLUSIONES
+1. La identificación de KPIs estratégicos como el cumplimiento de utilidades, la tasa de fuga de clientes y la productividad por ejecutivo permite un seguimiento más preciso del desempeño y orienta la gestión hacia los objetivos planteados.
+2. El modelo conceptual preliminar elaborado ofrece una visión integral de los factores que influyen en los resultados, facilitando el análisis predictivo y la detección de patrones relevantes en el negocio.
+3. El inventario de fuentes OLTP asegura la consistencia y disponibilidad de la información, lo cual es fundamental para garantizar la confiabilidad de los análisis desarrollados en el sistema de inteligencia de negocios.
+4. La adopción de Hortonworks como plataforma tecnológica brinda escalabilidad y capacidad de integración, fortaleciendo la infraestructura analítica y asegurando que la solución propuesta pueda evolucionar conforme a las necesidades de la organización.
 
